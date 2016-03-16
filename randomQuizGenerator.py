@@ -35,7 +35,7 @@ os.makedirs("./quizzes", exist_ok=True) #folder for quizzes
 
 for quizNum in range(5):
     quizFile = open('./quizzes/capitalsquiz%s.txt' % (quizNum + 1), 'w')
-    answerKeyFile = open('./answers/capitalsquiz_answers%s.txt' % (quizNum + 1))
+    answerKeyFile = open('./answers/capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')
 
                 #Header for quiz
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
