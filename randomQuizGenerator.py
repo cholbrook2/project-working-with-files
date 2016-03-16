@@ -29,10 +29,10 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             #       3. place the randomly-generated quizzes in the 'quizzes' directory.
             #       4. plaec the corresponding answers in the 'answers' directory.
 
-os.makedirs('./answers') #folder for answers
-os.makedirs('./quizzes') #folder for quizzes
+os.makedirs('./answers', exist_ok=True) #folder for answers
+os.makedirs('./quizzes', exist_ok=True) #folder for quizzes
 
-
+#Make 5 quiz files
 for quizNum in range(5):
     quizFile = open('./quizzes/capitalsquiz%s.txt' % (quizNum + 1), 'w')
     answerKeyFile = open('./answers/capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')
@@ -58,10 +58,10 @@ for quizNum in range(5):
                  # Write the question and the answer options to the quiz file.
             quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
             for i in range(4):
-                        quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
-                        quizFile.write('\n')
+                quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
+            quizFile.write('\n')
 
            # Write the answer key to a file.
-answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
+            answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
 quizFile.close()
 answerKeyFile.close()
