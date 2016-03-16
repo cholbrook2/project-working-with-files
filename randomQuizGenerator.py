@@ -29,8 +29,8 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             #       3. place the randomly-generated quizzes in the 'quizzes' directory.
             #       4. plaec the corresponding answers in the 'answers' directory.
 
-os.makedirs("./answers", exist_ok=True) #folder for answers
-os.makedirs("./quizzes", exist_ok=True) #folder for quizzes
+os.makedirs('./answers') #folder for answers
+os.makedirs('./quizzes') #folder for quizzes
 
 
 for quizNum in range(5):
@@ -47,19 +47,19 @@ for quizNum in range(5):
     random.shuffle(states)
 
                 #Get right and wrong answers
-for questionNum in range(50):
-    correctAnswer = capitals[states[questionNum]]
-    wrongAnswers = list(capitals.values())
-    del wrongAnswers[wrongAnswers.index(correctAnswer)]
-    wrongAnswers = random.sample(wrongAnswers, 3)
-    answerOptions = wrongAnswers + [correctAnswer]
-    random.shuffle(answerOptions)
+    for questionNum in range(50):
+            correctAnswer = capitals[states[questionNum]]
+            wrongAnswers = list(capitals.values())
+            del wrongAnswers[wrongAnswers.index(correctAnswer)]
+            wrongAnswers = random.sample(wrongAnswers, 3)
+            answerOptions = wrongAnswers + [correctAnswer]
+            random.shuffle(answerOptions)
 
                  # Write the question and the answer options to the quiz file.
-quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
-for i in range(4):
-    quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
-    quizFile.write('\n')
+            quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
+            for i in range(4):
+                        quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
+                        quizFile.write('\n')
 
            # Write the answer key to a file.
 answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
